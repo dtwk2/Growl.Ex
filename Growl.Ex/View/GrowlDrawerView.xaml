@@ -1,0 +1,108 @@
+﻿<reactiveUi:ReactiveUserControl
+    x:Class="Growl.Ex.View.GrowlDrawerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:common="clr-namespace:Growl.Ex.View.Infrastructure"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="clr-namespace:Growl.Ex.ViewModel.Infrastructure"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:reactiveUi="http://reactiveui.net"
+    xmlns:viewModel="clr-namespace:Growl.Ex.ViewModel"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:TypeArguments="viewModel:GrowlDrawerViewModel"
+    mc:Ignorable="d">
+    <UserControl.CommandBindings>
+        <CommandBinding
+            CanExecute="CanExecuteCustomCommand"
+            Command="{x:Static common:AppCommands.ShowGrowlPanel}"
+            Executed="ExecutedCustomCommand" />
+    </UserControl.CommandBindings>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <common:InverseBooleanToVisibilityConverter
+                x:Key="InverseVisibilityConverter"/>
+            <Storyboard x:Key="Blink">
+                <DoubleAnimation
+                    AutoReverse="True"
+                    RepeatBehavior="10x"
+                    Storyboard.TargetName="ToggleButton1"
+                    Storyboard.TargetProperty="Opacity"
+                    From="0.3"
+                    To="1"
+                    Duration="0:0:1" />
+            </Storyboard>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="Grid1" DockPanel.Dock="Right">
+        <hc:TransitioningContentControl HorizontalAlignment="Right" TransitionMode="Right2LeftWithFade">
+            <ToggleButton
+                x:Name="ToggleButton1"
+                Width="70"
+                Height="{Binding RelativeSource={RelativeSource AncestorType=Grid}}"
+                Margin="10"
+                VerticalAlignment="Stretch"
+                VerticalContentAlignment="Top"
+                IsChecked="{Binding IsOpen, ElementName=DrawerRight, Mode=TwoWay}"
+                Visibility="{Binding ElementName=DrawerRight, Path=IsOpen, Converter={StaticResource InverseVisibilityConverter}}">
+                <ItemsControl x:Name="ItemsControl1" Margin="10">
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <hc:Badge
+                                Height="30"
+                                Margin="20"
+                                BadgeMargin="0,-14,-10,0"
+                                Style="{StaticResource BadgePrimary}"
+                                Value="{Binding Count}">
+                                <Path
+                                    Width="30"
+                                    Height="30"
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Top"
+                                    Data="{Binding Data}"
+                                    Fill="{Binding Brush}"
+                                    Stretch="Uniform" />
+                            </hc:Badge>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </ToggleButton>
+        </hc:TransitioningContentControl>
+
+        <hc:Drawer
+            Name="DrawerRight"
+            Dock="Right"
+            ShowMode="Cover">
+            <Border Width="400" BorderThickness="0,1,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Button
+                        HorizontalAlignment="Right"
+                        hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"
+                        Command="hc:ControlCommands.Close"
+                        CommandTarget="{Binding}"
+                        Foreground="{DynamicResource PrimaryTextBrush}"
+                        Style="{StaticResource ButtonIcon}" />
+                    <ScrollViewer
+                        Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        VerticalScrollBarVisibility="Hidden">
+                        <common:ObservableGrid
+                            x:Name="MainObservableGrid"
+                            Margin="10,10,10,10"
+                            VerticalAlignment="Top"
+                            hc:Growl.Token="{x:Static data:MessageToken.GrowlMainPanel}" />
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+        </hc:Drawer>
+    </Grid>
+</reactiveUi:ReactiveUserControl>

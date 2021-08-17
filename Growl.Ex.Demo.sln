@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Growl.Ex.Demo", "Growl.Ex.Demo\Growl.Ex.Demo.csproj", "{066D2983-B2BD-4756-A847-1D940BA18746}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Growl.Ex", "Growl.Ex\Growl.Ex.csproj", "{E6E9E7E9-650E-4D41-B760-5949B8EEA552}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{066D2983-B2BD-4756-A847-1D940BA18746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{066D2983-B2BD-4756-A847-1D940BA18746}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{066D2983-B2BD-4756-A847-1D940BA18746}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{066D2983-B2BD-4756-A847-1D940BA18746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6E9E7E9-650E-4D41-B760-5949B8EEA552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E9E7E9-650E-4D41-B760-5949B8EEA552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E9E7E9-650E-4D41-B760-5949B8EEA552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E9E7E9-650E-4D41-B760-5949B8EEA552}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99AB108F-E978-4902-96B8-4AE9246CA4D4}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,26 @@
+﻿<reactiveUi:ReactiveUserControl
+    x:Class="Growl.Ex.View.GrowlCreateView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:reactiveUi="http://reactiveui.net"
+    xmlns:viewModel="clr-namespace:Growl.Ex.ViewModel"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:TypeArguments="viewModel:GrowlCreateViewModel"
+    mc:Ignorable="d">
+
+    <ToolBar MinHeight="50" >
+        <reactiveUi:ViewModelViewHost
+            x:Name="GrowlCreateInstanceViewModelViewHost"
+            VerticalContentAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"/>      
+        
+        <reactiveUi:ViewModelViewHost Margin="10,0"
+            x:Name="GrowlCreatePeriodicViewModelViewHost"
+            VerticalContentAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"/>
+    </ToolBar>
+   
+</reactiveUi:ReactiveUserControl>
